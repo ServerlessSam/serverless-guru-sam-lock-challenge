@@ -27,5 +27,6 @@ jobs:
       # sls deploy
       - name: Serverless deploy
         uses: serverless/github-action@e17abe72d4969e86cb53576ade34e95c40362f0e
+        working-directory: ./guru-crud-api
         with:
           args: deploy
