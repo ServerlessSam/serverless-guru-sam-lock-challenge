@@ -22,7 +22,7 @@ module.exports.getGurus = async (event) => {
       items: await result.Items.map((guru) => {
         return {
           name: guru.primary_key,
-          specialty: guru.specialty,
+          speciality: guru.speciality,
         };
       }),
     }),

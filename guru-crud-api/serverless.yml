@@ -31,6 +31,25 @@ functions:
       - httpApi:
           path: /
           method: get
+  getGuru:
+    handler: getGuru.getGuru
+    events:
+      - httpApi:
+          path: /{name}
+          method: get
+  deleteGuru:
+    handler: deleteGuru.deleteGuru
+    events:
+      - httpApi:
+          path: /{name}
+          method: delete
+  updateGuru:
+    handler: updateGuru.updateGuru
+    events:
+      - httpApi:
+          path: /{name}
+          method: put
+    
 
 
 resources:
