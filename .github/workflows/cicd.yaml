@@ -28,4 +28,4 @@ jobs:
         uses: serverless/github-action@v3.1
         with:
           args: -c "cd ./guru-crud-api && serverless deploy"
-        entrypoint: /bin/sh
+          entrypoint: /bin/sh
