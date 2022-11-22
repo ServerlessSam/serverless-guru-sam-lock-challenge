@@ -2,7 +2,7 @@
 
 name: Deploy API (prod)
 
-# Triggers
+# Triggers on a GitHub deployment
 on:
   deployment
 
