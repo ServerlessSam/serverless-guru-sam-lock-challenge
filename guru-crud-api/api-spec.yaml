@@ -1,0 +1,124 @@
+openapi: 3.0.3
+info:
+  title: Serverless Guru API - OpenAPI 3.0
+  description: |-
+    This is a CRUD API for all serverless gurus. Keep track of who specialises in what!
+  termsOfService: http://swagger.io/terms/
+  contact:
+    email: serverlesssam@gmail.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.11
+servers:
+  - url: https://82mgq90tlh.execute-api.us-east-1.amazonaws.com
+paths:
+  /{name}:
+    put:
+      summary: Update an existing guru
+      description: Update an existing guru by name
+      operationId: updateGuru
+      requestBody:
+        description: Update an existing guru in the DB
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/specialty'
+        required: true
+      parameters:
+        - in: path
+          name: name
+          schema:
+            type: string
+          required: true
+          description: An existing Guru's name
+      responses:
+        '200':
+          description: Successful operation
+        '404':
+          description: Guru not found
+    get:
+      summary: Get an existing guru
+      description: Get an existing guru by name
+      operationId: GetGuru
+      parameters:
+        - in: path
+          name: name
+          schema:
+            type: string
+          required: true
+          description: An existing Guru's name
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+                schema:
+                  $ref: '#/components/schemas/guru'  
+        '404':
+          description: Guru not found
+    delete:
+      summary: Delete an existing guru
+      description: Delete an existing guru by name
+      operationId: DeleteGuru
+      parameters:
+        - in: path
+          name: name
+          schema:
+            type: string
+          required: true
+          description: An existing Guru's name
+      responses:
+        '200':
+          description: Successful operation
+        '404':
+          description: Guru not found
+  /:
+    post:
+      summary: Add a new Guru to the DB
+      description: Add a new Guru to the DB
+      operationId: addGuru
+      requestBody:
+        description: Create a new pet in the store
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/guru'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+    get:
+      summary: Get an all gurus
+      description: Get all gurus
+      operationId: GetGurus
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+                schema:
+                  $ref: '#/components/schemas/gurus'  
+        '404':
+          description: No Gurus not found
+components:
+  schemas:
+    guru:
+      type: object
+      properties:
+        name:
+          type: string
+          example: BobSmith
+        specialty:
+          type: string
+          example: serverless computing
+    gurus:
+      type: array
+      items:
+        $ref: '#/components/schemas/guru'
+    specialty:
+      type: object
+      properties:
+        specialty:
+          type: string
+          example: serverless computing
